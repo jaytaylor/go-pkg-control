@@ -31,7 +31,7 @@ if (basename(__FILE__) == basename($_SERVER['REQUEST_URI'])) {
 
 $domain = $_SERVER['SERVER_NAME'];
 $proto = $_SERVER['REQUEST_SCHEME'];
-$domainRootUrl = $proto . '//' . $domain . '/';
+$domainRootUrl = $proto . '://' . $domain . '/';
 
 $pkgName = ltrim($_SERVER['SCRIPT_URL'], '/');
 $pkg = $domain . '/' . $pkgName;
