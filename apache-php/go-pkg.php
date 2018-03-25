@@ -55,12 +55,16 @@ $gitUrl = $gitBaseUrl . $gitBasePath . '/' . $pkgName;
         <h1>Package: <?php echo $pkgName ?></h1>
         <br>
         <br>
-        <a href="">Documentation</a>
+        <a href="https://godoc.org/<?php echo $pkg ?>">Package Documentation</a>
+        <br>
+        <br>
         <br>
         <br>
         <a href="<?php echo $pkgUrl ?>"><?php echo $pkg ?></a>
         is currently being served from
         <a href="<?php echo $gitUrl ?>"><?php echo $gitUrl ?></a>
+        <br>
+        <br>
         <br>
         <br>
     </div>
