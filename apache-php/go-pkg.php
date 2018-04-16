@@ -50,7 +50,7 @@ $gitUrl = $gitBaseUrl . $gitBasePath . '/' . $pkgName;
     <meta name="description" content="<?php echo $pkg ?>">
 </head>
 <body>
-    Back to <a href="<?php echo $domainRootUrl ?>"><?php echo $domain ?></a>
+    Back to <a href="<?php echo $domainRootUrl ?>"><?php echo $domain ?></a> | <a href="<?php echo $domainRootUrl ?>/go-pkgs">Packages</a>
     <div style="text-align: center; width: 100%;">
         <h1>Package: <?php echo $pkgName ?></h1>
         <br>
