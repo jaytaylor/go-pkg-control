@@ -18,7 +18,7 @@
 
 $gitBaseUrl = 'https://github.com/';
 
-$gitBasePath = 'jaytaylor';
+$gitBasePath = 'gigawattio';
 
 //
 // End settings.
