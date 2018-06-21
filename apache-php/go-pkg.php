@@ -36,7 +36,7 @@ $domainRootUrl = $proto . '://' . $domain . '/';
 $pkgName = ltrim($_SERVER['SCRIPT_URL'], '/');
 $pkg = $domain . '/' . $pkgName;
 $pkgUrl = $proto . '://' . $pkg;
-$gitUrl = $gitBaseUrl . $gitBasePath . '/' . $pkgName;
+$gitUrl = $gitBaseUrl . $gitBasePath . '/' . split('/', $pkgName)[0];
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
