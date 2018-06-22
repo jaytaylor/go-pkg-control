@@ -36,7 +36,7 @@ foreach ($pkgs as $idx => $pkg) {
     ?>
         <li><a href="/<?php echo $pkg ?>"><?php echo $pkg ?></a></li><?php
 }
-?>
+/*?>
     </ul>
 
     <h3>Packages I've contributed to:</h3>
@@ -66,7 +66,7 @@ foreach ($contributor as $idx => $ghSuffix) {
         <li><a href="https://github.com/<?php echo $ghSuffix ?>"><?php echo $pkg ?></a> by <?php echo $author ?></li><?php
 }
 ?>
-    </ul>
+    </ul>*/?>
 
     <a href="/">back</a>
 </body>
