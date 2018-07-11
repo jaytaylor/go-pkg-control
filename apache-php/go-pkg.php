@@ -36,7 +36,42 @@ $domainRootUrl = $proto . '://' . $domain . '/';
 $pkgName = ltrim($_SERVER['SCRIPT_URL'], '/');
 $pkg = $domain . '/' . $pkgName;
 $pkgUrl = $proto . '://' . $pkg;
-$gitUrl = $gitBaseUrl . $gitBasePath . '/' . split('/', $pkgName)[0];
+$gitUrl = $gitBaseUrl . $gitBasePath . '/' . explode('/', $pkgName)[0];
+
+// Test for suspicious package path.
+//
+// scorePackageName is a port of the following awk program:
+//
+// { split(x, C); n = split($1, F, "/"); n -= 1; m = n; for (i in F) if (i > 0) n -= (C[F[i]]++ > 0); $2 = n; $3 = m; if (n > 1) $4 = n / m ; else $4 = 1 }1
+//
+function scorePackageName($pkg) {
+    $seen = array();
+    $pieces = explode('/', $pkg);
+    $n = count($pieces);
+    --$n;
+    $m = $n;
+    for ($i = 0; $i < count($pieces); ++$i) {
+        if ($i > 0) { // Skip required domain name package prefix.
+            if (array_search($pieces[$i], $seen) != FALSE) {
+                --$n;
+            }
+            $seen[$pieces[$i]] = $pieces[$i];
+        }
+    }
+    if ($m != 0) {
+        return $n / $m;
+    }
+    return 1;
+}
+
+$plausabilityScore = scorePackageName($pkg);
+
+if ($plausabilityScore < 0.5) {
+    http_response_code(404);
+    echo '404 - not found';
+    return;
+}
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,6 +103,7 @@ $gitUrl = $gitBaseUrl . $gitBasePath . '/' . split('/', $pkgName)[0];
         <br>
         <br>
     </div>
+    <div>score: <?php echo $plausabilityScore ?></div>
     <br>
     Powered by <a href="https://github.com/jaytaylor/go-pkg-control">go-pkg-control</a>.
 </body>
