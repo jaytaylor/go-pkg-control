@@ -33,7 +33,10 @@ $domain = $_SERVER['SERVER_NAME'];
 $proto = $_SERVER['REQUEST_SCHEME'];
 $domainRootUrl = $proto . '://' . $domain . '/';
 
-$pkgName = ltrim($_SERVER['SCRIPT_URL'], '/');
+$pkgName = $_SERVER[array_key_exists('SCRIPT_URL', $_SERVER) ? 'SCRIPT_URL' : 'REQUEST_URI'];
+$pkgName = explode('?', $pkgName)[0];
+$pkgName = ltrim($pkgName, '/');
+
 $pkg = $domain . '/' . $pkgName;
 $pkgUrl = $proto . '://' . $pkg;
 $gitUrl = $gitBaseUrl . $gitBasePath . '/' . explode('/', $pkgName)[0];
