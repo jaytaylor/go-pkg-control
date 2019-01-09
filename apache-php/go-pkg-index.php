@@ -30,6 +30,7 @@ $pkgs = array(
     'awsarn',
     'window',
     'ago',
+    'knownhosts',
 );
 
 foreach ($pkgs as $idx => $pkg) {
