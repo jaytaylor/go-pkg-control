@@ -15,6 +15,8 @@ Golang packages I've created or maintain forks of:
 $pkgs = array(
     'archive.is',
     'archive.org',
+    'bboltqueue',
+    'circus',
     'go-bulk-dns-resolver',
     'go-hostsfile',
     'go-netcat',
